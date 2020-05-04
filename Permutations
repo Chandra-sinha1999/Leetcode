@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void help( vector<vector<int> >& res,vector<int>& nums,int i,int n){
+        //basecase
+        if(i == n){
+            res.push_back(nums);
+            return;
+        }
+        //recursive case
+        for(int j = i; j < n; j++){
+            swap(nums[i],nums[j]);
+            help(res,nums,i+1,n);
+            swap(nums[i],nums[j]);
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int> > res;
+        int n = nums.size();
+        help(res,nums,0,n);
+        return res;
+    }
+};
